@@ -10,24 +10,22 @@ int main()
 	for (auto item : arr) {
 		std::cout << item << " ";
 	}
-    system("pause");
- }
- template<typename T, unsigned SIZE>
-  void insertionsort(std::array<T, SIZE>& arr)
-  {
-	  int i{ 0 };
-	  T key;
-	 for(unsigned j = 1; j < arr.size(); ++j)
-	 {
-	    key = arr[j];
+	system("pause");
+}
+template<typename T, unsigned SIZE>
+void insertionsort(std::array<T, SIZE>& arr)
+{
+	int i{ 0 };
+	T key;
+	for (unsigned j = 1; j < arr.size(); ++j)
+	{
+		key = arr[j];
 		i = j - 1;
-		while(i >= 0 && arr[i] > key)// сортировка по убыванию а[i]<key если по возрастанию а[i]>key
+		while (i >= 0 && arr[i] > key)//   for descending sort arr[i]<key  for ascending sort [i]>key
 		{
-		  arr[ i + 1] = arr[i];
-		  --i;
+			arr[i + 1] = arr[i];
+			--i;
 		};
 		arr[i + 1] = key;
-	 }
-  }
-
- 
+	}
+}
