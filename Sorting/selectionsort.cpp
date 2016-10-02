@@ -11,7 +11,6 @@ int main()
 	for (auto item : arr) {
 		std::cout << item << " ";
 	}
- 
 	system("pause");
 }
 
