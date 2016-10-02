@@ -1,9 +1,7 @@
 #include<iostream>
 #include<array>
 
-const unsigned N = 20;
 int HEAPSIZE;
-
 
 inline unsigned parent(unsigned);
 inline unsigned left(unsigned);
@@ -19,7 +17,7 @@ void heapsort(std::array<T, SIZE>);
 
 int main()
 {
-	std::array<int, 8> arr{2,8,7,1,3,5,6,4};
+	std::array<int, 8> arr {2, 8, 7, 1, 3, 5, 6, 4};
 	heapsort(arr);
 
 	for (auto item : arr) {
@@ -73,7 +71,6 @@ void buildmaxheap(std::array<T, SIZE> arr)
 	 for(unsigned i = (N>>1); i > 0;--i)
 		 maxHeapify(arr,i - 1);
 }
-
 
 template<typename T, unsigned SIZE>
 void heapsort(std::array<T, SIZE> arr)
