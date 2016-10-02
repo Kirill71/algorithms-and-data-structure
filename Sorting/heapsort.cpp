@@ -1,23 +1,24 @@
 #include<iostream>
 #include<array>
 
-int HEAPSIZE;
+unsigned HEAPSIZE;
 
 inline unsigned parent(unsigned);
 inline unsigned left(unsigned);
 inline unsigned right(unsigned);
 
 template<typename T, unsigned SIZE>
-void buildmaxheap(std::array<T, SIZE>);
+void buildmaxheap(std::array<T, SIZE>& arr);
 
 template<typename T, unsigned SIZE>
-void maxheapify(std::array<T, SIZE>, unsigned);
+void maxheapify(std::array<T, SIZE>& arr, unsigned i);
+
 template<typename T, unsigned SIZE>
-void heapsort(std::array<T, SIZE>);
+void heapsort(std::array<T, SIZE>& arr);
 
 int main()
 {
-	std::array<int, 8> arr {2, 8, 7, 1, 3, 5, 6, 4};
+	std::array<int, 8> arr{ 2, 8, 7, 1, 3, 5, 6, 4 };
 	heapsort(arr);
 
 	for (auto item : arr) {
@@ -28,58 +29,55 @@ int main()
 	return 0;
 }
 
-
-
-
-inline  unsigned parent (unsigned i)
+inline  unsigned parent(unsigned i)
 {
-	return (i-1)>>1;
+	return (i - 1) >> 1;
 }
 
 inline unsigned left(unsigned i)
 {
-	return (i<<1)+1;
+	return (i << 1) + 1;
 }
 
-inline unsigned right (unsigned i)
+inline unsigned right(unsigned i)
 {
-	return (i<<1)+2;
+	return (i << 1) + 2;
 }
 
-template< typename T>
-void maxheapify(std::array<T,SIZE> arr, unsigned i)
+template< typename T, unsigned SIZE>
+void maxheapify(std::array<T, SIZE>& arr, unsigned i)
 {
 	int largest;
-	int left = left(i);
-	int right = right(i);
-	if (left < HEAPSIZE && arr[left] > arr[i]) largest = left;
+	int left_ = left(i);
+	int right_ = right(i);
+	if (left_ < HEAPSIZE && arr[left_] > arr[i]) largest = left_;
 	else largest = i;
 
-	if (right < HEAPSIZE && arr[right] > arr[largest]) largest = right;
+	if (right_ < HEAPSIZE && arr[right_] > arr[largest]) largest = right_;
 
 	if (largest != i)
 	{
-		std::swap(arr[i],arr[largest]);
-		maxHeapify(arr,largest);
+		std::swap(arr[i], arr[largest]);
+		maxheapify(arr, largest);
 	}
 }
 
 template<typename T, unsigned SIZE>
-void buildmaxheap(std::array<T, SIZE> arr)
+void buildmaxheap(std::array<T, SIZE>& arr)
 {
-	HEAPSIZE = N;
-	 for(unsigned i = (N>>1); i > 0;--i)
-		 maxHeapify(arr,i - 1);
+	HEAPSIZE = arr.size();
+	for (unsigned i = (arr.size() >> 1); i > 0; --i)
+		maxheapify(arr, i - 1);
 }
 
 template<typename T, unsigned SIZE>
-void heapsort(std::array<T, SIZE> arr)
+void heapsort(std::array<T, SIZE>& arr)
 {
-	buildMaxHeap(arr);
-	for(unsigned i= N - 1; i >= 1; --i)
+	buildmaxheap(arr);
+	for (int i = arr.size() - 1; i >= 0; --i)
 	{
 		std::swap(arr[0], arr[i]);
 		--HEAPSIZE;
-		maxHeapify(arr, 0);
+		maxheapify(arr, 0);
 	}
 }
