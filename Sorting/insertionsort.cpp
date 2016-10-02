@@ -15,8 +15,9 @@ int main()
  template<typename T, unsigned SIZE>
   void insertionsort(std::array<T, SIZE>& arr)
   {
-	  int  i,j,key;
-	 for( j = 1; j < arr.size(); ++j)
+	  int i{ 0 };
+	  T key;
+	 for(unsigned j = 1; j < arr.size(); ++j)
 	 {
 	    key = arr[j];
 		i = j - 1;
@@ -27,18 +28,6 @@ int main()
 		};
 		arr[i + 1] = key;
 	 }
-	
-	//for(int i = 1; i < arr.size(); ++i)
-	//{
-	//	for(int j = i-1; j >= 0; --j)
-	//	{	if( arr[i] < arr[j])// сортировка по возрастанию а[i]>a[j] сортировка по убыванию
-	//	    {
-	//	      std::swap(a[i],a[j]);
-	//		  --i;
-	//	    }
-	//	else break;
-		//}
-	//}
   }
 
  
