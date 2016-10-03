@@ -32,9 +32,8 @@ int partition(std::array<T, SIZE>& arr, int p, int r) {
 	T x = arr[r];
 	int i = p - 1;
 	for (unsigned j = p; j <= r - 1; ++j) {
-		if (arr[j] >= x) {
-			++i;
-			std::swap(arr[i], arr[j]);
+		if (arr[j] <= x) {
+			std::swap(arr[++i], arr[j]);
 		}
 	}
 	std::swap(arr[i + 1], arr[r]);
